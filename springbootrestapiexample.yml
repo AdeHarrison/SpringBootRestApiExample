@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-springbootrestapiexample
+spec:
+  selector:
+    app: deployment-springbootrestapiexample
+  type: NodePort
+  ports:
+    - name: http
+      port: 1234
+      nodePort: 31470
+      targetPort: 8080
+      protocol: TCP
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-springbootrestapiexample
+spec:
+  selector:
+    matchLabels:
+      run: deployment-springbootrestapiexample
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: deployment-springbootrestapiexample
+        app: deployment-springbootrestapiexample
+    spec:
+      containers:
+        - name: springbootrestapiexample
+          image: adeharrison/springbootrestapiexample
+          ports:
+            - containerPort: 8080
