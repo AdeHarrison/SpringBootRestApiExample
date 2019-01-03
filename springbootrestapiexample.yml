@@ -32,6 +32,8 @@ spec:
     spec:
       containers:
         - name: springbootrestapiexample
-          image: adeharrison/springbootrestapiexample
+          image: localhost:5000/springbootrestapiexample
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
+

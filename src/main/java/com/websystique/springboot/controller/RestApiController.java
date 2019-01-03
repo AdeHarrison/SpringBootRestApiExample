@@ -37,6 +37,9 @@ public class RestApiController {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NOT_FOUND
 		}
+
+		users.add(new User(1111,"Ade",55, 100));
+
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 
