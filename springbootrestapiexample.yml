@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: deployment-springbootrestapiexample
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: http
       port: 1234
