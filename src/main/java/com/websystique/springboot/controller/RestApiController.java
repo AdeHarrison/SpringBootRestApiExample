@@ -53,7 +53,7 @@ public class RestApiController {
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
 
-        ResponseEntity<List<User>> response = restTemplate.exchange("http://service-springbootrestapiexample2:31471/SpringBootRestApi2/api/user/",
+        ResponseEntity<List<User>> response = restTemplate.exchange("http://service-springbootrestapiexample2.default.svc.cluster.local:31471/SpringBootRestApi2/api/user/",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<User>>() {
