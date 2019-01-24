@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springbootrestapiexample
+  labels:
+    app: springbootrestapiexample
+spec:
+  type : LoadBalancer
+  selector:
+    app: springbootrestapiexample
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: springbootrestapiexample
+  labels:
+    app: springbootrestapiexample
+spec:
+  replicas: 1
+#  selector:
+#    app: springbootrestapiexample
+  template:
+    metadata:
+      name: springbootrestapiexample
+      labels:
+        app: springbootrestapiexample
+    spec:
+      containers:
+        - name: springbootrestapiexample
+          image: eu.gcr.io/census-rm-ade-harrison/springbootrestapiexample
+          ports:
+          - containerPort: 8080
